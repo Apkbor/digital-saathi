@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>GYM FITS - Nested Lists</title>
+<link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Barlow+Condensed:wght@400;700&family=Barlow:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root { --neon:#FF6B00; --dark:#0a0a0a; --card:#111; --text:#e0e0e0; --muted:#666; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--dark);color:var(--text);font-family:'Barlow',sans-serif;min-height:100vh; }
+  body::before { content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(255,107,0,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,107,0,0.03) 1px,transparent 1px);background-size:50px 50px;z-index:0;pointer-events:none; }
+  header { position:relative;z-index:2;background:#000;border-bottom:2px solid var(--neon);padding:20px 40px;display:flex;align-items:center;justify-content:space-between; }
+  .logo { font-family:'Black Ops One',cursive;font-size:1.6rem;color:var(--neon);letter-spacing:3px; }
+  .back { color:var(--neon);text-decoration:none;font-family:'Barlow Condensed',sans-serif;letter-spacing:2px;font-size:0.9rem;border:1px solid var(--neon);padding:8px 20px;transition:all 0.3s; }
+  .back:hover { background:var(--neon);color:#000; }
+  /* Image top-right corner */
+  #content { position:relative;z-index:2; }
+  #content .corner-img { position:absolute;top:0;right:0; }
+  .marquee-heading {
+    background:var(--neon);
+    color:#000;
+    font-family:'Black Ops One',cursive;
+    font-size:1.1rem;
+    padding:14px 0;
+    overflow:hidden;
+    position:relative;z-index:2;
+  }
+  .marquee-heading marquee { letter-spacing:4px; }
+  .main { position:relative;z-index:2;max-width:900px;margin:0 auto;padding:40px; }
+  .card { background:var(--card);border:1px solid #1e1e1e;border-radius:4px;padding:36px;position:relative;margin-bottom:24px; }
+  ol {
+    counter-reset:gym-counter;
+    list-style:none;
+    padding:0;
+  }
+  ol > li {
+    counter-increment:gym-counter;
+    position:relative;
+    padding:20px 20px 20px 60px;
+    border-bottom:1px solid #1a1a1a;
+  }
+  ol > li:last-child { border-bottom:none; }
+  ol > li::before {
+    content:counter(gym-counter,'0' decimal);
+    position:absolute;left:0;top:50%;transform:translateY(-50%);
+    font-family:'Black Ops One',cursive;
+    font-size:1.8rem;
+    color:var(--neon);
+    width:48px;
+    text-align:center;
+  }
+  ol > li .item-title { font-family:'Barlow Condensed',sans-serif;font-size:1.3rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:4px; }
+  ol > li:nth-child(1) .item-title { color:var(--neon); }
+  ol > li:nth-child(2) .item-title { color:#FFD700; }
+  ol > li:nth-child(3) .item-title { color:#00CFFF; }
+  ol > li:nth-child(4) .item-title { color:#FF3366; }
+  ol > li .item-desc { font-size:0.9rem;color:var(--muted);margin-bottom:12px; }
+  /* Unordered sub-list */
+  ul.sub {
+    list-style:none;
+    padding:0;
+    display:flex;flex-wrap:wrap;gap:8px;
+  }
+  ul.sub li {
+    font-family:'Barlow Condensed',sans-serif;
+    font-size:0.85rem;
+    letter-spacing:1px;
+    padding:4px 14px;
+    border:1px solid #2a2a2a;
+    border-radius:2px;
+    color:#bbb;
+    position:relative;
+    padding-left:20px;
+  }
+  ul.sub li::before { content:'▸';position:absolute;left:6px;color:var(--neon);font-size:0.7rem; }
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">GYMFITS</div>
+  <a class="back" href="index.html">← BACK</a>
+</header>
+ 
+<div class="marquee-heading">
+  <marquee scrollamount="8">🏋️ GYMFITS TRAINING PROGRAMS — ORDERED WORKOUT CATEGORIES WITH NESTED EXERCISE LISTS — TRAIN SMART · LIFT BIG · RECOVER STRONG 🏋️</marquee>
+</div>
+ 
+<div id="content">
+  <img class="corner-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Circle-icons-dumbbell.svg/80px-Circle-icons-dumbbell.svg.png" alt="Dumbbell" width="80" style="filter:sepia(1) saturate(3) hue-rotate(10deg) brightness(1.2);margin:16px;">
+ 
+  <div class="main">
+    <div class="card">
+      <ol>
+        <li>
+          <div class="item-title">Strength Training</div>
+          <div class="item-desc">Build raw power and muscle mass with compound lifts</div>
+          <ul class="sub">
+            <li>Barbell Squat</li><li>Bench Press</li><li>Deadlift</li><li>Overhead Press</li><li>Barbell Row</li><li>Pull-ups</li>
+          </ul>
+          <hr style="border:none;border-top:1px solid #1e1e1e;margin-top:20px;">
+        </li>
+        <li>
+          <div class="item-title">Cardio Workouts</div>
+          <div class="item-desc">Torch calories and boost your cardiovascular health</div>
+          <ul class="sub">
+            <li>HIIT Sprints</li><li>Treadmill Run</li><li>Jump Rope</li><li>Cycling</li><li>Rowing Machine</li><li>Stair Climber</li>
+          </ul>
+          <hr style="border:none;border-top:1px solid #1e1e1e;margin-top:20px;">
+        </li>
+        <li>
+          <div class="item-title">Muscle Groups</div>
+          <div class="item-desc">Targeted isolation exercises for balanced physique development</div>
+          <ul class="sub">
+            <li>Chest — Dumbbell Fly</li><li>Back — Lat Pulldown</li><li>Legs — Leg Press</li><li>Shoulders — Lateral Raise</li><li>Biceps — Curl</li><li>Triceps — Pushdown</li><li>Core — Planks</li>
+          </ul>
+          <hr style="border:none;border-top:1px solid #1e1e1e;margin-top:20px;">
+        </li>
+        <li>
+          <div class="item-title">Nutrition Plan</div>
+          <div class="item-desc">Fuel your gains with science-backed dietary strategies</div>
+          <ul class="sub">
+            <li>Pre-workout Meal</li><li>Protein Shakes</li><li>Complex Carbs</li><li>Healthy Fats</li><li>Hydration — 4L/day</li><li>Post-workout Recovery</li><li>Caloric Surplus/Deficit</li>
+          </ul>
+          <hr style="border:none;border-top:1px solid #1e1e1e;margin-top:20px;">
+        </li>
+      </ol>
+    </div>
+  </div>
+</div>
+</body>
+</html>

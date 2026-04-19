@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Digital Saathi - डिजिटल साथी, वरिष्ठ नागरिकों के लिए स्मार्टफोन सहायता ऐप">
+    <meta name="theme-color" content="#3b82f6">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <title>Digital Saathi | डिजिटल साथी</title>
+    
+    <!-- Preconnect for fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- App Container -->
+    <div class="app-container" id="appContainer">
+        
+        <!-- Status Bar -->
+        <div class="status-bar">
+            <span class="time" id="currentTime">9:41</span>
+            <div class="status-icons">
+                <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 18c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm-5.3-4.3c1.4-1.4 3.3-2.2 5.3-2.2s3.9.8 5.3 2.2l1.4-1.4C16.1 10.5 14.1 9.5 12 9.5s-4.1 1-5.7 2.8l1.4 1.4zm-2.8-2.8c2.6-2.6 6.1-4.1 9.1-4.1s6.5 1.5 9.1 4.1l1.4-1.4C20.7 6.5 17.1 4.8 12 4.8S3.3 6.5.5 9.5l1.4 1.4z"/>
+                </svg>
+                <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                    <rect x="2" y="16" width="3" height="6" rx="1"/>
+                    <rect x="7" y="13" width="3" height="9" rx="1"/>
+                    <rect x="12" y="10" width="3" height="12" rx="1"/>
+                    <rect x="17" y="7" width="3" height="15" rx="1"/>
+                </svg>
+                <div class="battery">
+                    <div class="battery-body">
+                        <div class="battery-level"></div>
+                    </div>
+                    <div class="battery-tip"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- App Header -->
+        <header class="app-header">
+            <h1 class="app-title">Digital Saathi</h1>
+            <p class="app-subtitle">आपके डिजिटल जीवन में सहायक</p>
+        </header>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            
+            <!-- Greeting Card -->
+            <section class="greeting-card" id="greetingCard">
+                <div class="avatar-container">
+                    <div class="avatar">
+                        <svg viewBox="0 0 48 48" fill="none">
+                            <circle cx="24" cy="24" r="24" fill="#dbeafe"/>
+                            <circle cx="24" cy="20" r="8" fill="#3b82f6"/>
+                            <path d="M24 30c-8 0-14 4-14 10v4h28v-4c0-6-6-10-14-10z" fill="#3b82f6"/>
+                        </svg>
+                    </div>
+                    <div class="status-dot" id="statusDot"></div>
+                </div>
+                <div class="greeting-text">
+                    <span class="greeting-time" id="greetingTime">नमस्ते! Good Morning</span>
+                    <h2 class="user-name" id="userName">श्रीमती शर्मा</h2>
+                    <span class="status-badge" id="statusBadge">
+                        <svg viewBox="0 0 20 20" fill="currentColor" width="16" height="16">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                        </svg>
+                        <span id="statusText">सब कुछ सुरक्षित है</span>
+                    </span>
+                </div>
+                <button class="quick-call-btn" id="quickCallBtn" aria-label="Quick Call Family" title="परिवार को कॉल करें">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M6.62 10.79c1.44 2.83 3.87 5.14 6.69 6.69l2.23-2.23c.3-.3.73-.39 1.11-.23 1.23.49 2.56.76 3.93.76.55 0 1 .45 1 1v3.72c0 .55-.45 1-1 1C9.06 21 3 14.94 3 7.5c0-.55.45-1 1-1H7.8c.55 0 1 .45 1 1 0 1.37.27 2.7.76 3.93.15.38.06.81-.23 1.11l-2.23 2.23z"/>
+                    </svg>
+                </button>
+            </section>
+            
+            <!-- Menu Section -->
+            <section class="menu-section">
+                <div class="section-header">
+                    <h3 class="section-title">सहायता मेनू</h3>
+                    <span class="section-subtitle">Help Menu</span>
+                </div>
+                
+                <div class="menu-grid">
+                    <!-- WhatsApp Guide -->
+                    <button class="menu-card whatsapp-card" data-guide="whatsapp" aria-label="WhatsApp Guide">
+                        <div class="card-icon-wrapper">
+                            <div class="card-icon whatsapp-icon">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.299-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.894 6.994c-.003 5.45-4.437 9.884-9.886 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title">व्हाट्सएप गाइड</span>
+                            <span class="card-subtitle">WhatsApp Guide</span>
+                            <span class="card-status">सीखना शुरू करें →</span>
+                        </div>
+                    </button>
+                    
+                    <!-- UPI Safety -->
+                    <button class="menu-card upi-card" data-guide="upi" aria-label="UPI Safety Guide">
+                        <div class="card-icon-wrapper">
+                            <div class="card-icon upi-icon">
+                                <span class="upi-text">UPI</span>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title">UPI सुरक्षा</span>
+                            <span class="card-subtitle">UPI Safety</span>
+                            <span class="card-status">सीखना शुरू करें →</span>
+                        </div>
+                    </button>
+                    
+                    <!-- Scam Alert -->
+                    <button class="menu-card scam-card" data-guide="scam" aria-label="Scam Alert">
+                        <div class="card-icon-wrapper">
+                            <div class="card-icon scam-icon">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 2L1 21h22L12 2zm0 3.5L19.5 19h-15L12 5.5zm-1 4v5h2v-5h-2zm0 7v2h2v-2h-2z"/>
+                                </svg>
+                            </div>
+                            <div class="card-badge" id="scamBadge">!</div>
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title">घोटाला अलर्ट</span>
+                            <span class="card-subtitle">Scam Alert</span>
+                            <span class="card-status urgent" id="scamAlertCount">4 नए अलर्ट</span>
+                        </div>
+                    </button>
+                    
+                    <!-- Ask for Help -->
+                    <button class="menu-card help-card" data-guide="ask-help" aria-label="Ask for Help">
+                        <div class="card-icon-wrapper">
+                            <div class="card-icon help-icon">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title">मदद माँगें</span>
+                            <span class="card-subtitle">Ask for Help</span>
+                            <span class="card-status">हम यहाँ हैं →</span>
+                        </div>
+                    </button>
+                </div>
+            </section>
+            
+            <!-- Quick Actions Section -->
+            <section class="quick-actions-section">
+                <div class="section-header">
+                    <h3 class="section-title">त्वरित कार्य</h3>
+                    <span class="section-subtitle">Quick Actions</span>
+                </div>
+                <div class="quick-actions-grid">
+                    <button class="quick-action-btn" data-action="call-family" aria-label="Call Family">
+                        <div class="qa-icon call">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M6.62 10.79c1.44 2.83 3.87 5.14 6.69 6.69l2.23-2.23c.3-.3.73-.39 1.11-.23 1.23.49 2.56.76 3.93.76.55 0 1 .45 1 1v3.72c0 .55-.45 1-1 1C9.06 21 3 14.94 3 7.5c0-.55.45-1 1-1H7.8c.55 0 1 .45 1 1 0 1.37.27 2.7.76 3.93.15.38.06.81-.23 1.11l-2.23 2.23z"/>
+                            </svg>
+                        </div>
+                        <span>परिवार<br/>कॉल</span>
+                    </button>
+                    <button class="quick-action-btn" data-action="balance" aria-label="Check Balance">
+                        <div class="qa-icon balance">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/>
+                            </svg>
+                        </div>
+                        <span>बैलेंस<br/>चेक</span>
+                    </button>
+                    <button class="quick-action-btn" data-action="report-scam" aria-label="Report Scam">
+                        <div class="qa-icon report">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M14.4 6L14 4H5v17h2v-7h5.6l.4 2h7V6h-5.6z"/>
+                            </svg>
+                        </div>
+                        <span>घोटाला<br/>रिपोर्ट</span>
+                    </button>
+                    <button class="quick-action-btn" data-action="history" aria-label="View History">
+                        <div class="qa-icon history">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z"/>
+                            </svg>
+                        </div>
+                        <span>इतिहास<br/>देखें</span>
+                    </button>
+                </div>
+            </section>
+            
+            <!-- SOS Emergency Button -->
+            <section class="emergency-section">
+                <button class="sos-button" id="sosButton" aria-label="Emergency SOS Call">
+                    <div class="sos-icon">
+                        <span class="sos-text">SOS</span>
+                    </div>
+                    <div class="sos-content">
+                        <span class="sos-title">緊急呼叫 / इमरजेंसी कॉल</span>
+                        <span class="sos-subtitle">Emergency Call • बड़े बटन पर टैप करें</span>
+                    </div>
+                </button>
+            </section>
+            
+        </main>
+        
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav">
+            <button class="nav-item active" data-tab="home" aria-label="Home">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+                </svg>
+                <span>होम</span>
+            </button>
+            <button class="nav-item" data-tab="learn" aria-label="Learn">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3z"/>
+                </svg>
+                <span>सीखें</span>
+            </button>
+            <button class="nav-item" data-tab="history" aria-label="History">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z"/>
+                </svg>
+                <span>इतिहास</span>
+            </button>
+            <button class="nav-item" data-tab="profile" aria-label="Profile">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                </svg>
+                <span>प्रोफाइल</span>
+            </button>
+        </nav>
+        
+    </div>
+    
+    <!-- Main Modal Overlay -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal" id="modal">
+            <div class="modal-header">
+                <button class="modal-back-btn" id="modalBackBtn" aria-label="Go back">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+                        <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+                    </svg>
+                </button>
+                <h3 class="modal-title" id="modalTitle">Modal Title</h3>
+                <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close modal">
+                    <svg viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+                        <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Dynamic content will be inserted here -->
+            </div>
+        </div>
+    </div>
+    
+    <!-- SOS Emergency Modal -->
+    <div class="sos-modal-overlay" id="sosModalOverlay">
+        <div class="sos-modal" id="sosModal">
+            <div class="sos-modal-content">
+                <div class="sos-pulse"></div>
+                <div class="sos-icon-large">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+                    </svg>
+                </div>
+                <h2 class="sos-modal-title">SOS इमरजेंसी</h2>
+                <p class="sos-modal-subtitle">क्या आप आपातकालीन सहायता चाहते हैं?</p>
+                <p class="sos-modal-desc">यह आपके आपातकालीन संपर्कों को सूचित करेगा</p>
+                
+                <div class="sos-contacts-list" id="sosContactsList">
+                    <!-- Contacts will be loaded here -->
+                </div>
+                
+                <div class="sos-buttons">
+                    <button class="btn btn-secondary btn-large" id="sosCancelBtn">रद्द करें</button>
+                    <button class="btn btn-danger btn-large" id="sosConfirmBtn">
+                        <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                            <path d="M6.62 10.79c1.44 2.83 3.87 5.14 6.69 6.69l2.23-2.23c.3-.3.73-.39 1.11-.23 1.23.49 2.56.76 3.93.76.55 0 1 .45 1 1v3.72c0 .55-.45 1-1 1C9.06 21 3 14.94 3 7.5c0-.55.45-1 1-1H7.8c.55 0 1 .45 1 1 0 1.37.27 2.7.76 3.93.15.38.06.81-.23 1.11l-2.23 2.23z"/>
+                        </svg>
+                        SOS भेजें
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <div class="toast-icon"></div>
+        <div class="toast-content">
+            <span class="toast-title"></span>
+            <span class="toast-message"></span>
+        </div>
+    </div>
+    
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+        <p class="loading-text">कृपया प्रतीक्षा करें...</p>
+    </div>
+    
+    <!-- JavaScript -->
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
