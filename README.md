@@ -368,7 +368,7 @@ Medication reminders.
 Contributing
 bash
 # Fork & clone
-git clone https://github.com/yourusername/digital-saathi.git
+git clone https://github.com/Apkbor/digital-saathi.git
 cd digital-saathi
 
 # Setup venv
